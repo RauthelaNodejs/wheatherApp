@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #34495e;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #34495e;
+    }
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather App</h1>
+  <form action="/weather" method="POST">
+    <input type="text" name="city" placeholder="Enter city" required>
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <h2>Weather Data</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Temperature (°C)</th>
+        <th>Description</th>
+        <th>Retrieved on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% weatherData.forEach(data => { %>
+        <tr>
+          <td><%= data.city %></td>
+          <td><%= data.temperature %></td>
+          <td><%= data.description %></td>
+          <td><%= data.date.toLocaleString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
