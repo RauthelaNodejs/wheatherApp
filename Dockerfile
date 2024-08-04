@@ -3,7 +3,7 @@
 FROM node:14
 
 # Create and change to the app directory.
-WORKDIR /usr/src/app
+WORKDIR /wheatherApp
 
 # Copy application dependency manifests to the container image.
 COPY package*.json ./
@@ -15,4 +15,4 @@ RUN npm install
 COPY . .
 
 # Run the web service on container startup.
-CMD [ "node", "app.js" ]
+CMD [ "node", "server.js" ]
